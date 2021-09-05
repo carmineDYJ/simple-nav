@@ -1,0 +1,6 @@
+*{box-sizing: border-box;}
+*::before, *::after{box-sizing: border-box;}
+*{margin: 0; padding: 0;}
+ul,ol{list-style: none;}
+
+/*# sourceMappingURL=/reset.302ca0b1.css.map */
