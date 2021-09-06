@@ -1,26 +1,44 @@
+const x = localStorage.getItem('x');
+const xObject = JSON.parse(x);
+const hashMap = (xObject.length !== 0) ? xObject : [
+    { logo: 'a', logoType: 'text', url: 'https://www.acfun.cn' },
+    { logo: 'b', logoType: 'text', url: 'https://www.bilibili.com' }
+];
+const $siteList = $('.siteList');
+const $lastLi = $siteList.find('li.last');
+const simplifyUrl = (url) => {
+    return url.replace('https://', '')
+        .replace('http://', '')
+        .replace('www.', '')
+        .replace(/\/.*/, '');
+};
 const render = () => {
-    hashMap.forEach(node => {
+    console.log(xObject)
+    console.log(hashMap);
+    $siteList.find('li:not(.last)').remove();
+    hashMap.forEach((node, index) => {
         const $li = $(`
         <li>
             <a href="${node.url}">
                 <div class="site">
                     <div class="logo">${node.logo}</div>
-                    <div class="link">${node.url}</div>
+                    <div class="link">${simplifyUrl(node.url)}</div>
+                    <div class="close">
+                        <svg class="icon">
+                            <use xlink:href="#icon-searchClose"></use>
+                        </svg>
+                    </div>
                 </div>
             </a>
         </li>
         `).insertBefore($lastLi);
+        $li.on('click', '.close', (e) => {
+            e.preventDefault();
+            hashMap.splice(index, 1);
+            render();
+        });
     });
-}
-const x = localStorage.getItem('x');
-const xObject = JSON.parse(x);
-const hashMap = xObject || [
-    { logo: 'A', logoType: 'text', url: 'https://www.acfun.cn' },
-    { logo: 'B', logoType: 'text', url: 'https://www.bilibili.com' }
-];
-console.log(x);
-const $siteList = $('.siteList');
-const $lastLi = $siteList.find('li.last');
+};
 
 render();
 
@@ -29,12 +47,22 @@ $('.addButton').on('click', () => {
     if (url.indexOf('http') !== 0) {
         url = 'https://' + url;
     }
-    hashMap.push({ logo: url[0], logoType: 'text', url: url });
+    hashMap.push({ logo: simplifyUrl(url)[0], logoType: 'text', url: url });
     $siteList.find('li:not(.last)').remove();
     render();
 });
 
 window.onbeforeunload = () => {
     const string = JSON.stringify(hashMap);
+    console.log(string);
     localStorage.setItem('x', string);
 };
+
+$(document).on('keypress', (e)=>{
+    const {key} = e;
+    for (let i = 0; i < hashMap.length; i++){
+        if(hashMap[i].logo.toLowerCase() === key){
+            window.open(hashMap[i].url);
+        }
+    }
+})
