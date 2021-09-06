@@ -26,19 +26,14 @@ body{
         margin-right: auto;
     }
 }
-.searchForm > select{
+.searchForm > input{
+    width: 100%;
     margin-right: 10px;
     height: 40px;
+    padding: 0 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
 }
-/* .searchForm > select > option{
-    margin-left: auto;
-    margin-right: auto;
-} */
 .searchForm > input{
     width: 100%;
     margin-right: 10px;
@@ -50,11 +45,11 @@ body{
 .searchForm > button{
     background: #3281A3;
     color: white;
-    white-space: nowrap;
-    padding: 0 20px;
     border: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    white-space: nowrap;
     border-radius: 4px;
-    font-size: 16px;
 }
 .globalMain{
     max-width: 1000px;
@@ -109,7 +104,6 @@ body{
 .siteList .site > .link{
     font-size: 14px;
     margin-top: 4px;
-
 }
 .siteList .site > .close{
     position: absolute;
@@ -135,13 +129,14 @@ body{
     width: 100%;
 }
 .siteList .addButton{
+    border: 1px solid #ddd;
     background: white;
     width: 160px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 21px 0;
+    padding: 20px 0;
 }
 .siteList .addButton .iconWrapper{
     width: 64px;

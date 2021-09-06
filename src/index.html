@@ -8,6 +8,7 @@
     <meta name="description" content="">
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/layui/2.6.8/css/layui.min.css">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -15,12 +16,12 @@
 <body>
     <header class="globalHeader">
         <form class="searchForm" method="GET" action="https://www.baidu.com/s" target="_blank">
-            <select name="" id="">
-                <option value="baidu"><img src="./vZ2nWy8M.jpeg" alt=""></option>
-                <option value="baidu">google</option>
-            </select>
             <input name="wd" type="text">
-            <button type="submit">搜索</button>
+            <!-- <button type="submit">搜索</button> -->
+            <button class="layui-btn" id="searchEngine" type="submit">
+                百度
+                <i class="layui-icon layui-icon-down layui-font-12"></i>
+            </button>
         </form>
     </header>
     <main class="globalMain">
@@ -37,9 +38,10 @@
             </li>
         </ul>
     </main>
+    <script src="https://cdn.bootcdn.net/ajax/libs/layui/2.6.8/layui.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="//at.alicdn.com/t/font_2791636_39rsgn03sjc.js"></script>
-    
+    <script src="//at.alicdn.com/t/font_2791636_bnr509dumso.js"></script>
+
     <script src="main.js"></script>
 </body>
 

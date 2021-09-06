@@ -182,7 +182,25 @@ $(document).on('keypress', function (e) {
     }
   }
 });
-},{}],"../../../../.config/yarn/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+layui.use('dropdown', function () {
+  var dropdown = layui.dropdown;
+  dropdown.render({
+    elem: '#searchEngine' //可绑定在任意元素中，此处以上述按钮为例
+    ,
+    data: [{
+      title: '百度',
+      href: '#'
+    }, {
+      title: '谷歌',
+      href: '#'
+    }],
+    id: 'searchEngine',
+    click: function click(obj) {
+      $("#searchEngine").text(obj.title);
+    }
+  });
+});
+},{}],"D:/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -210,7 +228,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50674" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "12453" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -385,5 +403,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../../.config/yarn/global/node_modules/parcel/src/builtins/hmr-runtime.js","main.js"], null)
+},{}]},{},["D:/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js","main.js"], null)
 //# sourceMappingURL=/main.1f19ae8e.js.map

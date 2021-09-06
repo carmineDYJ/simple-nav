@@ -58,11 +58,32 @@ window.onbeforeunload = () => {
     localStorage.setItem('x', string);
 };
 
-$(document).on('keypress', (e)=>{
-    const {key} = e;
-    for (let i = 0; i < hashMap.length; i++){
-        if(hashMap[i].logo.toLowerCase() === key){
+$(document).on('keypress', (e) => {
+    const { key } = e;
+    for (let i = 0; i < hashMap.length; i++) {
+        if (hashMap[i].logo.toLowerCase() === key) {
             window.open(hashMap[i].url);
         }
     }
-})
+});
+
+layui.use('dropdown', function () {
+    var dropdown = layui.dropdown
+    dropdown.render({
+        elem: '#searchEngine' //可绑定在任意元素中，此处以上述按钮为例
+        , data: [
+            {
+                title: '百度',
+                href: '#'
+            },
+            {
+                title: '谷歌',
+                href: '#'
+            }
+        ]
+        , id: 'searchEngine'
+        , click: function (obj) {
+            $("#searchEngine").text(obj.title);
+        }
+    });
+});
