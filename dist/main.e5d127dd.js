@@ -120,7 +120,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 })({"epB2":[function(require,module,exports) {
 var x = localStorage.getItem('x');
 var xObject = JSON.parse(x);
-var hashMap = xObject.length !== 0 ? xObject : [{
+var hashMap = xObject !== null && xObject.length !== 0 ? xObject : [{
   logo: 'a',
   logoType: 'text',
   url: 'https://www.acfun.cn'
@@ -183,4 +183,4 @@ $(document).on('keypress', function (e) {
   }
 });
 },{}]},{},["epB2"], null)
-//# sourceMappingURL=main.77ba20c7.js.map
+//# sourceMappingURL=main.e5d127dd.js.map

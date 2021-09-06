@@ -1,6 +1,6 @@
 const x = localStorage.getItem('x');
 const xObject = JSON.parse(x);
-const hashMap = (xObject.length !== 0) ? xObject : [
+const hashMap = (xObject !== null && xObject.length !== 0) ? xObject : [
     { logo: 'a', logoType: 'text', url: 'https://www.acfun.cn' },
     { logo: 'b', logoType: 'text', url: 'https://www.bilibili.com' }
 ];
