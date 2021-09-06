@@ -118,8 +118,48 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"main.js":[function(require,module,exports) {
+var render = function render() {
+  hashMap.forEach(function (node) {
+    var $li = $("\n        <li>\n            <a href=\"".concat(node.url, "\">\n                <div class=\"site\">\n                    <div class=\"logo\">").concat(node.logo, "</div>\n                    <div class=\"link\">").concat(node.url, "</div>\n                </div>\n            </a>\n        </li>\n        ")).insertBefore($lastLi);
+  });
+};
 
-},{}],"D:/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+var x = localStorage.getItem('x');
+var xObject = JSON.parse(x);
+var hashMap = xObject || [{
+  logo: 'A',
+  logoType: 'text',
+  url: 'https://www.acfun.cn'
+}, {
+  logo: 'B',
+  logoType: 'text',
+  url: 'https://www.bilibili.com'
+}];
+console.log(x);
+var $siteList = $('.siteList');
+var $lastLi = $siteList.find('li.last');
+render();
+$('.addButton').on('click', function () {
+  var url = window.prompt('网址');
+
+  if (url.indexOf('http') !== 0) {
+    url = 'https://' + url;
+  }
+
+  hashMap.push({
+    logo: url[0],
+    logoType: 'text',
+    url: url
+  });
+  $siteList.find('li:not(.last)').remove();
+  render();
+});
+
+window.onbeforeunload = function () {
+  var string = JSON.stringify(hashMap);
+  localStorage.setItem('x', string);
+};
+},{}],"../../../../.config/yarn/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -147,7 +187,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "11328" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51216" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -322,5 +362,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["D:/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js","main.js"], null)
+},{}]},{},["../../../../.config/yarn/global/node_modules/parcel/src/builtins/hmr-runtime.js","main.js"], null)
 //# sourceMappingURL=/main.1f19ae8e.js.map

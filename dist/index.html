@@ -13,31 +13,49 @@
 
 <body>
     <header class="globalHeader">
-        <input type="text">
-        <button>搜索</button>
+        <form class="searchForm" method="GET" action="https://www.baidu.com/s" target="_blank">
+            <input name="wd" type="text">
+            <button type="submit">搜索</button>
+        </form>
     </header>
     <main class="globalMain">
         <ul class="siteList">
+            <!-- <li>
+                <a href="https://www.acfun.cn">
+                    <div class="site">
+                        <div class="logo">A</div>
+                        <div class="link">acfun.cn</div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.bilibili.com">
+                    <div class="site">
+                        <div class="logo">B</div>
+                        <div class="link">bilibili.com</div>
+                    </div>
+                </a>
+            </li>
             <li>
                 <div class="site">
                     <div class="logo">A</div>
                     <div class="link">acfun.cn</div>
                 </div>
-            </li>
-            <li>
-                <div class="site">
-                    <div class="logo">B</div>
-                    <div class="link">bilibili.com</div>
-                </div>
-            </li>
-            <li>
+            </li> -->
+            <li class="last">
                 <div class="addButton">
-                    <div class="icon"></div>
+                    <div class="iconWrapper">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-add"></use>
+                        </svg>
+                    </div>
                     <div class="text">新增网站</div>
                 </div>
             </li>
         </ul>
     </main>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="//at.alicdn.com/t/font_2791636_l84wuj5k249.js"></script>
     <script src="/main.1f19ae8e.js"></script>
 </body>
 

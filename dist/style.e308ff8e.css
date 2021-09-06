@@ -1,13 +1,21 @@
+.icon {
+    width: 1em; height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
 body{
     background: #eee;
 }
 .globalHeader{
-    border: 1px solid red;
     margin: 20px;
+    
+}
+.searchForm{
     display: flex;
     justify-content: space-between;
 }
-.globalHeader > input{
+.searchForm > input{
     width: 100%;
     margin-right: 10px;
     height: 40px;
@@ -15,7 +23,7 @@ body{
     border: 1px solid #ddd;
     border-radius: 4px;
 }
-.globalHeader > button{
+.searchForm > button{
     background: #3281A3;
     color: white;
     white-space: nowrap;
@@ -34,7 +42,6 @@ body{
     justify-content: space-between;
 }
 .siteList > li{
-    border: 1px solid red;
     margin-bottom: 10px;
 }
 .siteList .site{
@@ -62,7 +69,28 @@ body{
 
 }
 .siteList .addButton{
+    background: white;
     width: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 21px 0;
+}
+.siteList .addButton .iconWrapper{
+    width: 64px;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.siteList .addButton .text{
+    font-size: 14px;
+    margin-top: 4px;
+}
+.siteList .addButton .icon{
+    width: 56px;
+    height: 56px;
 }
 
 
