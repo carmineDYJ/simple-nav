@@ -6,6 +6,19 @@
 }
 body{
     background: #eee;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+@media(min-width: 500px){
+    body{
+        background-image: url('https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455_1280.jpg');
+    }
+}
+@media(max-width: 500px){
+    body{
+        background-image: url('https://pic3.zhimg.com/80/v2-c96676ac91b79dddb6419133699de38e_1440w.jpg');
+    }
 }
 .globalHeader{
     margin: 20px;
@@ -26,23 +39,42 @@ body{
         margin-right: auto;
     }
 }
-.searchForm > input{
+.searchForm > .inputSearchWrapper {
+    height: 38px;
+    background: white;
     width: 100%;
-    margin-right: 10px;
-    height: 40px;
+    position: relative;
     padding: 0 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
 }
-.searchForm > input{
+.searchForm > .inputSearchWrapper > input{
     width: 100%;
-    margin-right: 10px;
-    height: 40px;
+    height: 100%;
     padding: 0 10px;
-    border: 1px solid #ddd;
+    border: none;
     border-radius: 4px;
+    position: absolute;
+    left: 0px;
 }
-.searchForm > button{
+.searchForm > .inputSearchWrapper > .searchButton{
+    background: white;
+    border: none;
+    height: 100%;
+    position: absolute;
+    right: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+}
+.searchForm > .inputSearchWrapper > .searchButton:hover{
+    cursor: pointer;
+}
+.searchForm > .inputSearchWrapper > .searchButton > img{
+    height: 100%;
+    border: none;
+}
+.searchForm #searchEngine{
     background: #3281A3;
     color: white;
     border: none;
@@ -50,6 +82,7 @@ body{
     padding-right: 10px;
     white-space: nowrap;
     border-radius: 4px;
+    margin-right: 10px;
 }
 .globalMain{
     max-width: 1000px;
@@ -116,15 +149,78 @@ body{
     top: 5px;
     cursor: default;
 }
+.siteList .site > .edit{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    width: 20px;
+    right: 25px;
+    top: 5px;
+    cursor: default;
+}
+.siteList .site > .left{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15px;
+    width: 15px;
+    left: 5px;
+    bottom: 5px;
+    cursor: default;
+}
+.siteList .site > .right{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15px;
+    width: 15px;
+    right: 5px;
+    bottom: 5px;
+    cursor: default;
+}
 @media (min-width: 500px){
     .siteList .site > .close{
+        display: none;
+    }
+    .siteList .site > .edit{
+        display: none;
+    }
+    .siteList .site > .left{
+        display: none;
+    }
+    .siteList .site > .right{
         display: none;
     }
 }
 .siteList .site:hover > .close{
     display: block;
 }
+.siteList .site:hover > .edit{
+    display: block;
+}
+.siteList .site:hover > .left{
+    display: block;
+}
+.siteList .site:hover > .right{
+    display: block;
+}
 .siteList .site > .close .icon{
+    height: 100%;
+    width: 100%;
+}
+.siteList .site > .edit .icon{
+    height: 100%;
+    width: 100%;
+}
+.siteList .site > .left .icon{
+    height: 100%;
+    width: 100%;
+}
+.siteList .site > .right .icon{
     height: 100%;
     width: 100%;
 }
@@ -155,4 +251,4 @@ body{
 }
 
 
-/*# sourceMappingURL=/style.e308ff8e.css.map */
+/*# sourceMappingURL=style.7de527fe.css.map */
