@@ -142,8 +142,12 @@ var simplifyUrl = function simplifyUrl(url) {
   return url.replace('https://', '').replace('http://', '').replace('www.', '').replace(/\/.*/, '');
 };
 
-var urlAlreadyExist = function urlAlreadyExist(url) {
+var urlAlreadyExist = function urlAlreadyExist(url, indexSkipped) {
   for (var i = 0; i < hashMap.length; i++) {
+    if (indexSkipped !== undefined && indexSkipped === i) {
+      continue;
+    }
+
     if (hashMap[i].url === url) {
       return true;
     }
@@ -169,30 +173,29 @@ var render = function render() {
         newUrl = window.prompt('请输入你想要更新该链接为(不能为空)：');
       }
 
-      if (newUrl.indexOf('http') !== 0) {
-        newUrl = 'https://' + newUrl;
-      }
-
-      if (urlAlreadyExist(newUrl)) {
-        window.alert('该链接已经存在');
-      } else {
-        var newLogo = window.prompt("请输入该链接显示的logo为（可留空自动生成，仅一位有效）：");
-
-        if (newLogo === '') {
-          newLogo = simplifyUrl(newUrl)[0];
-        } else {
-          newLogo = newLogo[0];
+      if (newUrl !== null) {
+        if (newUrl.indexOf('http') !== 0) {
+          newUrl = 'https://' + newUrl;
         }
 
-        if (newUrl !== null && newLogo !== null) {
+        if (urlAlreadyExist(newUrl, index)) {
+          window.alert('该链接已经存在');
+        } else {
+          var newLogo = window.prompt("请输入该链接显示的logo为（可留空自动生成，仅一位有效）：");
+
+          if (newLogo === '') {
+            newLogo = simplifyUrl(newUrl)[0];
+          } else {
+            newLogo = newLogo[0];
+          }
+
           hashMap.splice(index, 1, {
             logo: newLogo,
             logoType: 'text',
             url: newUrl
           });
+          render();
         }
-
-        render();
       }
     });
     $li.on('click', '.left', function (e) {
@@ -242,20 +245,22 @@ $('.addButton').on('click', function () {
     url = window.prompt('请输入你想要添加的链接(不能为空)：');
   }
 
-  if (url.indexOf('http') !== 0) {
-    url = 'https://' + url;
-  }
+  if (url !== null) {
+    if (url.indexOf('http') !== 0) {
+      url = 'https://' + url;
+    }
 
-  if (urlAlreadyExist(url)) {
-    window.alert('该链接已经存在');
-  } else {
-    hashMap.push({
-      logo: simplifyUrl(url)[0],
-      logoType: 'text',
-      url: url
-    });
-    $siteList.find('li:not(.last)').remove();
-    render();
+    if (urlAlreadyExist(url)) {
+      window.alert('该链接已经存在');
+    } else {
+      hashMap.push({
+        logo: simplifyUrl(url)[0],
+        logoType: 'text',
+        url: url
+      });
+      $siteList.find('li:not(.last)').remove();
+      render();
+    }
   }
 });
 $(document).on('keypress', function (e) {
@@ -293,4 +298,4 @@ window.onbeforeunload = function () {
   localStorage.setItem('searchEngine', $("#searchEngine").text().trim());
 };
 },{}]},{},["epB2"], null)
-//# sourceMappingURL=main.527b4de5.js.map
+//# sourceMappingURL=main.40c3599b.js.map

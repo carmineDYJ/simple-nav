@@ -15,8 +15,11 @@ const simplifyUrl = (url) => {
         .replace('www.', '')
         .replace(/\/.*/, '');
 };
-const urlAlreadyExist = (url) => {
+const urlAlreadyExist = (url, indexSkipped) => {
     for (let i = 0; i < hashMap.length; i++) {
+        if (indexSkipped !== undefined && indexSkipped === i) {
+            continue;
+        }
         if (hashMap[i].url === url) {
             return true;
         }
@@ -67,22 +70,22 @@ const render = () => {
             while (newUrl === '') {
                 newUrl = window.prompt('请输入你想要更新该链接为(不能为空)：');
             }
-            if (newUrl.indexOf('http') !== 0) {
-                newUrl = 'https://' + newUrl;
-            }
-            if (urlAlreadyExist(newUrl)) {
-                window.alert('该链接已经存在');
-            } else {
-                let newLogo = window.prompt("请输入该链接显示的logo为（可留空自动生成，仅一位有效）：");
-                if (newLogo === '') {
-                    newLogo = simplifyUrl(newUrl)[0];
+            if (newUrl !== null) {
+                if (newUrl.indexOf('http') !== 0) {
+                    newUrl = 'https://' + newUrl;
+                }
+                if (urlAlreadyExist(newUrl, index)) {
+                    window.alert('该链接已经存在');
                 } else {
-                    newLogo = newLogo[0];
-                }
-                if (newUrl !== null && newLogo !== null) {
+                    let newLogo = window.prompt("请输入该链接显示的logo为（可留空自动生成，仅一位有效）：");
+                    if (newLogo === '') {
+                        newLogo = simplifyUrl(newUrl)[0];
+                    } else {
+                        newLogo = newLogo[0];
+                    }
                     hashMap.splice(index, 1, { logo: newLogo, logoType: 'text', url: newUrl });
+                    render();
                 }
-                render();
             }
         });
         $li.on('click', '.left', (e) => {
@@ -122,15 +125,17 @@ $('.addButton').on('click', () => {
     while (url === '') {
         url = window.prompt('请输入你想要添加的链接(不能为空)：');
     }
-    if (url.indexOf('http') !== 0) {
-        url = 'https://' + url;
-    }
-    if (urlAlreadyExist(url)) {
-        window.alert('该链接已经存在');
-    } else {
-        hashMap.push({ logo: simplifyUrl(url)[0], logoType: 'text', url: url });
-        $siteList.find('li:not(.last)').remove();
-        render();
+    if (url !== null) {
+        if (url.indexOf('http') !== 0) {
+            url = 'https://' + url;
+        }
+        if (urlAlreadyExist(url)) {
+            window.alert('该链接已经存在');
+        } else {
+            hashMap.push({ logo: simplifyUrl(url)[0], logoType: 'text', url: url });
+            $siteList.find('li:not(.last)').remove();
+            render();
+        }
     }
 });
 
